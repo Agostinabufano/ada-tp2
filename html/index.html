@@ -1,13 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <title>TP2 Memotest</title>
 </head>
+
 <body>
+    <div class="welcome">
+        <h1>Memotest</h1>
+        <p>Hola <span>👋</span>! Vamos a jugar al Memotest pero antes de empezar... ¿Cuál es tu nombre?</p>
+        <input type="text" id="name">
+        <p>¿Con qué dificultad te gustaría jugar?</p>
+        <div class="buttons">
+            <button class="level facil">FÁCIL</button>
+            <button class="level intermedio">INTERMEDIO</button>
+            <button class="level experto">EXPERTO</button>
+        </div>
+        <div class="alertName ups">
+            <span id="error">UPPS... El nombre es requerido</span>
+        </div>
+    </div>
+    <div class="game">
+        <div class="hiGame">
+            <h1>Memotest</h1>
+            <h2 id="hello">Hola </h2>
+            <p>Encontra todos los pares en menos de intentos</p>
+            <div>
+                <p>Nivel</p>
+                <p></p>
+            </div>
+        </div>
+        <div class="cards">
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="" data-img="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+            <div class="cardsImg">
+                <img src="../imagenes/tapada.jpg" alt="">
+            </div>
+        </div>
+        <div class="lifes">
+            <p><b>Intentos: </b></p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="../js/index.js"></script>
 </body>
+
 </html>
