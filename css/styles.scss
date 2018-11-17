@@ -119,3 +119,48 @@ h1 {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%)
 }
+
+@media (max-width: 600px) {
+    .welcome {
+        width: 60%;
+        p {
+            width: 60%;
+        }
+        .buttons {
+            button {
+                width: 150px;
+            }
+        }
+        .alertName {
+            width: 150px;
+        }
+    }
+    .game {
+        width: 60%;
+        h1 {
+            margin: 0%;
+        }
+        h3 {
+            margin: 0%;
+        }
+        p {
+            margin: 0%;
+        }
+    }
+    .cards {
+        width: 100%;
+        .cardsImg {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+        }
+    }
+    .lifes {
+        width: 40%;
+        height: 30px;
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

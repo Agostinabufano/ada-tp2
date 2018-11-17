@@ -120,4 +120,50 @@ h1 {
   filter: grayscale(100%);
 }
 
+@media (max-width: 600px) {
+  .welcome {
+    width: 60%;
+  }
+  .welcome p {
+    width: 60%;
+  }
+  .welcome .buttons button {
+    width: 150px;
+  }
+  .welcome .alertName {
+    width: 150px;
+  }
+
+  .game {
+    width: 60%;
+  }
+  .game h1 {
+    margin: 0%;
+  }
+  .game h3 {
+    margin: 0%;
+  }
+  .game p {
+    margin: 0%;
+  }
+
+  .cards {
+    width: 100%;
+  }
+  .cards .cardsImg {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+  }
+
+  .lifes {
+    width: 40%;
+    height: 30px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 /*# sourceMappingURL=styles.css.map */

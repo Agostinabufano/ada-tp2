@@ -1,5 +1,5 @@
 $(".level").on("click", function () {
-    var name = $("#name").val()
+    var name = $("#name").val();
     if (name == " ") {
         $(".alertName").removeClass("ups");
         setTimeout(function () {
@@ -13,19 +13,19 @@ var movements;
 
 $(".facil").on("click", function () {
     movements = 18;
-    $("#tries").html("18")
+    $("#tries").html("18");
     $("#level").html("FACIL")
 })
 
 $(".intermedio").on("click", function () {
     movements = 12;
-    $("#tries").html("12")
+    $("#tries").html("12");
     $("#level").html("INTERMEDIO")
 })
 
 $(".experto").on("click", function () {
     movements = 9;
-    $("#tries").html("9")
+    $("#tries").html("9");
     $("#level").html("EXPERTO")
 })
 
@@ -64,40 +64,41 @@ arr.sort(function (a, b) {
 var imgsLength = $('.cardsImg').length
 
 for (var i = 0; i < imgsLength; i++) {
-    $('.cardsImg').children('img').eq(i).attr('data-img', arr[i].url)
-    $('.cardsImg').children('img').eq(i).attr('data-pos', i)
+    $('.cardsImg').children('img').eq(i).attr('data-img', arr[i].url);
+    $('.cardsImg').children('img').eq(i).attr('data-pos', i);
     $('.cardsImg').eq(i).attr('id', arr[i].id)
 }
 
 $('.cardsImg').on('click', function () {
-    var visible = $(this).children('img').attr('data-img')
+    var visible = $(this).children('img').attr('data-img');
     $(this).children('img').attr('src', visible)
 })
 
 var clicks = 2;
-var primerClick
+var primerClick;
 
 $(".cardsImg").on("click", function () {
     $(this).children("img").addClass("noPointer animated flipInY");
-    clicks = clicks - 1
-    var pos = $(this).children('img').attr('data-pos')
+    clicks = clicks - 1;
+    var pos = $(this).children('img').attr('data-pos');
     if (clicks == 1) {
         primerClick = arr[pos]
     } else {
         if (arr[pos].url == primerClick.url) {
-            $(this).addClass("found")
-            $("#" + primerClick.id).addClass("found")
+            $(this).addClass("found");
+            $("#" + primerClick.id).addClass("found");
+            var paresEncontrados = paresEncontrados + 1;
+            console.log(paresEncontrados);
+            //NO FUNCIONA EL ParesEncontrados... MUESTRA EN CONSOLA UN NaN
         } else {
             setTimeout(function () {
-                $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg")
+                $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg");
                 $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")                
             }, 1000)
         }
         clicks = 2
     }
 })
-
-// var paresEncontrados = 0; 
 
 // function game () {
 //     clicks;
