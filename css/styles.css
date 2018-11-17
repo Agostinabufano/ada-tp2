@@ -1,6 +1,7 @@
 body {
   margin: 0%;
   display: flex;
+  font-family: "Comfortaa", cursive;
   flex-direction: column;
   justify-content: auto;
   background-image: url("../imagenes/fondo.jpg");
@@ -43,6 +44,7 @@ h1 {
   width: 300px;
   height: 30px;
   margin: 3px;
+  font-family: "Comfortaa", cursive;
 }
 .welcome .alertName {
   background-color: pink;
@@ -109,6 +111,9 @@ h1 {
 }
 .lifes p {
   text-align: center;
+}
+.lifes .number {
+  color: orange;
 }
 
 .noPointer {

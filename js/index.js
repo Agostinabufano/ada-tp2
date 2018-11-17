@@ -74,37 +74,41 @@ $('.cardsImg').on('click', function () {
     $(this).children('img').attr('src', visible)
 })
 
-var clicks = 2;
+var clicks = 0;
 var primerClick;
+var intentos = clicks + 1;
 
 $(".cardsImg").on("click", function () {
-    $(this).children("img").addClass("noPointer animated flipInY");
-    clicks = clicks - 1;
+    $(this).children("img").addClass("noPointer");
+    $(this).addClass("animated flipInY");
+    clicks = clicks + 1;
     var pos = $(this).children('img').attr('data-pos');
     if (clicks == 1) {
         primerClick = arr[pos]
     } else {
         if (arr[pos].url == primerClick.url) {
+            var paresEncontrados = 0;
             $(this).addClass("found");
             $("#" + primerClick.id).addClass("found");
-            var paresEncontrados = paresEncontrados + 1;
+            paresEncontrados++;
             console.log(paresEncontrados);
-            //NO FUNCIONA EL ParesEncontrados... MUESTRA EN CONSOLA UN NaN
+            //NO FUNCIONA EL ParesEncontrados... MUESTRA EN CONSOLA siempre 1
         } else {
             setTimeout(function () {
                 $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg");
-                $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")                
+                $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")
             }, 1000)
+            intentos + 1
+            console.log(intentos);
+            //NO FUNCIONA intentos... MUESTRA EN CONSOLA siempre 1
         }
-        clicks = 2
+        $(".lifes").children("p").html("<b>Intentos: </b>" + "<span class='number'>" + intentos + "</span>")
+        clicks = 0
     }
 })
 
 // function game () {
 //     clicks;
-//     mmovimientos <= clicks
-//     if (click a una imag) {
-// click++
-//     }
-//     click = 0
+//     movimientos <= clicks
+//     intentos <= moviemientos 
 // }
