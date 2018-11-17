@@ -13,17 +13,25 @@ var movements;
 
 $(".facil").on("click", function () {
     movements = 18;
+    $("#tries").html("18")
+    $("#level").html("FACIL")
 })
+
 $(".intermedio").on("click", function () {
     movements = 12;
+    $("#tries").html("12")
+    $("#level").html("INTERMEDIO")
 })
+
 $(".experto").on("click", function () {
     movements = 9;
+    $("#tries").html("9")
+    $("#level").html("EXPERTO")
 })
 
 var arr = [];
 
-function setArr (id, url) {
+function setArr(id, url) {
     pieza = {
         id: id,
         url: url,
@@ -44,49 +52,49 @@ setArr(10, "../imagenes/peces.jpg")
 setArr(11, "../imagenes/alce.jpg")
 setArr(12, "../imagenes/epelante.jpg")
 
-$(".cardsImg").on ("click", function () {
+$(".cardsImg").on("click", function () {
     var id;
     id = arr[arr.length - 1].id + 1
 })
 
-arr.sort(function (a,b) {
+arr.sort(function (a, b) {
     return Math.random() - 0.5;
 })
 
 var imgsLength = $('.cardsImg').length
 
 for (var i = 0; i < imgsLength; i++) {
-  $('.cardsImg').children('img').eq(i).attr('data-img', arr[i].url)
-  $('.cardsImg').children('img').eq(i).attr('data-pos', i)
-  $('.cardsImg').eq(i).attr('id', arr[i].id)
+    $('.cardsImg').children('img').eq(i).attr('data-img', arr[i].url)
+    $('.cardsImg').children('img').eq(i).attr('data-pos', i)
+    $('.cardsImg').eq(i).attr('id', arr[i].id)
 }
 
-$('.cardsImg').on('click', function() {
-  var visible = $(this).children('img').attr('data-img')
-  $(this).children('img').attr('src', visible)
+$('.cardsImg').on('click', function () {
+    var visible = $(this).children('img').attr('data-img')
+    $(this).children('img').attr('src', visible)
 })
 
 var clicks = 2;
 var primerClick
 
-$(".cardsImg").on ("click", function () {
-    $(this).addClass("noPointer");
+$(".cardsImg").on("click", function () {
+    $(this).children("img").addClass("noPointer animated flipInY");
     clicks = clicks - 1
     var pos = $(this).children('img').attr('data-pos')
     if (clicks == 1) {
         primerClick = arr[pos]
     } else {
-        console.log(arr[pos].url, primerClick.url)
         if (arr[pos].url == primerClick.url) {
-            $(this).addClass("greyCard")
-            $("#" + primerClick.id).addClass("greyCard")
-            console.log('iguales')
+            $(this).addClass("found")
+            $("#" + primerClick.id).addClass("found")
         } else {
-           $(this).children('img').removeAttr('data-img')
-            console.log('distintas')
-            clicks = 2
+            setTimeout(function () {
+                $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg")
+                $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")                
+            }, 1000)
         }
-    }  
+        clicks = 2
+    }
 })
 
 // var paresEncontrados = 0; 

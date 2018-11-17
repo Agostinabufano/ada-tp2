@@ -71,11 +71,14 @@ h1 {
         text-align: center;
         margin: 5px;
     }
-    h2 {
+    h3 {
         text-align: center;
     }
     p {
         text-align: center;
+        span {
+            color: deepskyblue;
+        }
     }
 }
 
@@ -112,9 +115,7 @@ h1 {
     pointer-events: none;
 }
 
-.greyCard {
-    img{
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
-    }
+.found {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%)
 }
