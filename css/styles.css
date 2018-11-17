@@ -66,6 +66,7 @@ h1 {
   width: 80%;
   margin: auto;
   flex-wrap: wrap;
+  background-color: rgba(255, 228, 196, 0.568);
 }
 .game h1 {
   text-align: center;
@@ -83,10 +84,11 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
 .cards .cardsImg {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: 10px;
   justify-content: center;
   border: solid orange;
@@ -100,9 +102,19 @@ h1 {
   border: solid 5px deepskyblue;
   border-radius: 5px;
   width: 900px;
+  margin: 10px;
 }
 .lifes p {
   text-align: center;
+}
+
+.noPointer {
+  pointer-events: none;
+}
+
+.greyCard img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 /*# sourceMappingURL=styles.css.map */
