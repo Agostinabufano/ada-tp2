@@ -60,7 +60,16 @@ h1 {
   display: none;
 }
 
+.none {
+  display: none;
+}
+
+.game.none {
+  display: none;
+}
+
 .game {
+  display: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +115,7 @@ h1 {
   background-color: white;
   border: solid 5px deepskyblue;
   border-radius: 5px;
-  width: 900px;
+  width: 700px;
   margin: 10px;
 }
 .lifes p {

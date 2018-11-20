@@ -1,12 +1,15 @@
 $(".level").on("click", function () {
     var name = $("#name").val();
-    if (name == " ") {
+    if (name == "") {
         $(".alertName").removeClass("ups");
         setTimeout(function () {
             $(".alertName").addClass("ups");
         }, 3000)
+    } else {
+        $(".game").removeClass("none");
+        $(".welcome").addClass("none")
+        $("#hello").html(`Hola ${name}`)
     }
-    $("#hello").html(`Hola ${name}`)
 })
 
 var movements;
@@ -76,7 +79,8 @@ $('.cardsImg').on('click', function () {
 
 var clicks = 0;
 var primerClick;
-var intentos = clicks + 1;
+var intentos = 0;
+var paresEncontrados = 0;
 
 $(".cardsImg").on("click", function () {
     $(this).children("img").addClass("noPointer");
@@ -86,13 +90,12 @@ $(".cardsImg").on("click", function () {
     if (clicks == 1) {
         primerClick = arr[pos]
     } else {
+        intentos += 1;
         if (arr[pos].url == primerClick.url) {
-            var paresEncontrados = 0;
             $(this).addClass("found");
             $("#" + primerClick.id).addClass("found");
             paresEncontrados++;
             console.log(paresEncontrados);
-            //NO FUNCIONA EL ParesEncontrados... MUESTRA EN CONSOLA siempre 1
         } else {
             setTimeout(function () {
                 $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg");
@@ -100,12 +103,20 @@ $(".cardsImg").on("click", function () {
             }, 1000)
             intentos + 1
             console.log(intentos);
-            //NO FUNCIONA intentos... MUESTRA EN CONSOLA siempre 1
+
         }
         $(".lifes").children("p").html("<b>Intentos: </b>" + "<span class='number'>" + intentos + "</span>")
         clicks = 0
     }
 })
+
+function win() {
+    if (paresEncontrados = 6 && intentos <= movements) {
+        $("body").append("<div class='winner'></div>");
+        $(".winner").append("<p>Ganaste🎉!con <span class='numberIntentos'></span> intentos.Ya podes vovler a jugar.")
+        $(".winner").append("<button class= 'level'>VOLVER A JUGAR</button>")
+    }
+}
 
 // function game () {
 //     clicks;

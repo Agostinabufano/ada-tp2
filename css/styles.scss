@@ -14,6 +14,10 @@ h1 {
     margin: 0%;
 }
 
+// #name {
+//     border-color: hotpink;
+// }
+
 .welcome {
     display: flex;
     align-items: center;
@@ -60,7 +64,16 @@ h1 {
     }
 }
 
+.none {
+    display: none;
+}
+
+.game.none {
+    display: none;
+}
+
 .game {
+    display: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -106,7 +119,7 @@ h1 {
     background-color: white;
     border: solid 5px deepskyblue;
     border-radius: 5px;
-    width: 900px;
+    width: 700px;
     margin: 10px;
     p {
         text-align: center;
@@ -123,6 +136,10 @@ h1 {
 .found {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%)
+}
+
+.winner {
+//DAR ESTILOS AL DIV!!!
 }
 
 @media (max-width: 600px) {
