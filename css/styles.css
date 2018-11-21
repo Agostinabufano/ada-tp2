@@ -136,14 +136,26 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid black 3px;
-  width: 300px;
+  border: solid black 5px;
+  width: 400px;
   height: 300px;
   border-radius: 10px;
   background-color: bisque;
+  position: fixed;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 100px;
+  z-index: 1;
 }
 .winner P {
   text-align: center;
+}
+.winner div {
+  width: 90px;
+  display: flex;
+  height: 100px;
+  border: solid black 1.5px;
+  flex-direction: column;
 }
 
 .lost {
@@ -151,7 +163,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: solid black 3px;
+  border: solid black 5px;
   width: 300px;
   height: 150px;
   border-radius: 10px;
@@ -159,6 +171,11 @@ button {
 }
 .lost P {
   text-align: center;
+}
+
+.overlaid {
+  background-color: bisque;
+  opacity: 0.5;
 }
 
 .none {

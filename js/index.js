@@ -5,6 +5,7 @@ var clicks = 0;
 var primerClick;
 var intentos = 0;
 var paresEncontrados = 0;
+var nivel;
 
 $(".level").on("click", function () {
     var name = $("#name").val();
@@ -24,18 +25,21 @@ $(".facil").on("click", function () {
     movements = 18;
     $("#tries").html("18");
     $("#level").html("FACIL");
+    nivel = "facil";
 })
 
 $(".intermedio").on("click", function () {
     movements = 12;
     $("#tries").html("12");
-    $("#level").html("INTERMEDIO")
+    $("#level").html("INTERMEDIO");
+    nivel = "intermedio";
 })
 
 $(".experto").on("click", function () {
     movements = 9;
     $("#tries").html("9");
-    $("#level").html("EXPERTO")
+    $("#level").html("EXPERTO");
+    nivel = "experto";
 })
 
 function setArr(id, url) {
@@ -101,8 +105,21 @@ $(".cardsImg").on("click", function () {
         }
         if (win() == true) {
             $(".winner").removeClass("none");
+            $(".game").addClass("overlaid")
             $(".numberIntentos").html(intentos);
-        } else {
+            var obj = {
+                nombre: $("#name").val(),
+                nivel: nivel,
+                intentos: intentos,
+            }
+            localStorage.setItem("nombre", JSON.stringify(obj.nombre));
+            localStorage.setItem("nivel",JSON.stringify(obj.nivel));
+            localStorage.setItem("intentos",JSON.stringify(obj.intentos));
+            localStorage.getItem(JSON.stringify(obj.nombre),JSON.stringify(obj.nivel),JSON.stringify(obj.intentos));
+            $(".names").append(obj.nombre);
+            $(".levels").append(obj.nivel);
+            $(".attemps").append(obj.intentos);
+        } else if (win() == false){
             $(".lost").removeClass("none");
         }
         $(".lifes").children("p").html("<b>Intentos: </b>" + "<span class='number'>" + intentos + "</span>")
@@ -111,9 +128,9 @@ $(".cardsImg").on("click", function () {
 })
 
 function win () {
-    if (paresEncontrados = 6 && intentos <= movements) {
+    if (paresEncontrados == 6 && intentos <= movements) {
         return true;
-    } else {
+    }else if (paresEncontrados != 6 && intentos > movements) {
         return false;
     }
 }
