@@ -14,9 +14,9 @@ h1 {
     margin: 0%;
 }
 
-// #name {
-//     border-color: hotpink;
-// }
+#name {
+    border-color: hotpink;
+}
 
 .welcome {
     display: flex;
@@ -38,16 +38,6 @@ h1 {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        button {
-            border-radius: 5px;
-            border: none;
-            background-color: orange;
-            color: whitesmoke;
-            width: 300px;
-            height: 30px;
-            margin: 3px;
-            font-family: 'Comfortaa', cursive;
-        }
     }
     .alertName {
         background-color: pink;
@@ -64,12 +54,15 @@ h1 {
     }
 }
 
-.none {
-    display: none;
-}
-
-.game.none {
-    display: none;
+button {
+    border-radius: 5px;
+    border: none;
+    background-color: orange;
+    color: whitesmoke;
+    width: 250px;
+    height: 30px;
+    margin: 3px;
+    font-family: 'Comfortaa', cursive;
 }
 
 .game {
@@ -78,7 +71,7 @@ h1 {
     justify-content: center;
     align-items: center;
     border: solid black 13px;
-    width: 80%;
+    width: 70%;
     margin: auto;
     flex-wrap: wrap;
     background-color: rgba(255, 228, 196, 0.568);
@@ -139,7 +132,37 @@ h1 {
 }
 
 .winner {
-//DAR ESTILOS AL DIV!!!
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid black 3px;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: bisque;
+    P {
+        text-align: center;
+    }
+}
+
+.lost {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid black 3px;
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    background-color: bisque;
+    P {
+        text-align: center;
+    }
+}
+
+.none {
+    display: none;
 }
 
 @media (max-width: 600px) {

@@ -14,6 +14,10 @@ h1 {
   margin: 0%;
 }
 
+#name {
+  border-color: hotpink;
+}
+
 .welcome {
   display: flex;
   align-items: center;
@@ -36,16 +40,6 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-.welcome .buttons button {
-  border-radius: 5px;
-  border: none;
-  background-color: orange;
-  color: whitesmoke;
-  width: 300px;
-  height: 30px;
-  margin: 3px;
-  font-family: "Comfortaa", cursive;
-}
 .welcome .alertName {
   background-color: pink;
   color: palevioletred;
@@ -60,12 +54,15 @@ h1 {
   display: none;
 }
 
-.none {
-  display: none;
-}
-
-.game.none {
-  display: none;
+button {
+  border-radius: 5px;
+  border: none;
+  background-color: orange;
+  color: whitesmoke;
+  width: 250px;
+  height: 30px;
+  margin: 3px;
+  font-family: "Comfortaa", cursive;
 }
 
 .game {
@@ -74,7 +71,7 @@ h1 {
   justify-content: center;
   align-items: center;
   border: solid black 13px;
-  width: 80%;
+  width: 70%;
   margin: auto;
   flex-wrap: wrap;
   background-color: rgba(255, 228, 196, 0.568);
@@ -132,6 +129,40 @@ h1 {
 .found {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+}
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid black 3px;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: bisque;
+}
+.winner P {
+  text-align: center;
+}
+
+.lost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: solid black 3px;
+  width: 300px;
+  height: 150px;
+  border-radius: 10px;
+  background-color: bisque;
+}
+.lost P {
+  text-align: center;
+}
+
+.none {
+  display: none;
 }
 
 @media (max-width: 600px) {

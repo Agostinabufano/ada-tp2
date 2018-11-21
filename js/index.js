@@ -1,3 +1,11 @@
+var movements;
+var arr = [];
+var imgsLength = $('.cardsImg').length;
+var clicks = 0;
+var primerClick;
+var intentos = 0;
+var paresEncontrados = 0;
+
 $(".level").on("click", function () {
     var name = $("#name").val();
     if (name == "") {
@@ -12,12 +20,10 @@ $(".level").on("click", function () {
     }
 })
 
-var movements;
-
 $(".facil").on("click", function () {
     movements = 18;
     $("#tries").html("18");
-    $("#level").html("FACIL")
+    $("#level").html("FACIL");
 })
 
 $(".intermedio").on("click", function () {
@@ -31,8 +37,6 @@ $(".experto").on("click", function () {
     $("#tries").html("9");
     $("#level").html("EXPERTO")
 })
-
-var arr = [];
 
 function setArr(id, url) {
     pieza = {
@@ -64,8 +68,6 @@ arr.sort(function (a, b) {
     return Math.random() - 0.5;
 })
 
-var imgsLength = $('.cardsImg').length
-
 for (var i = 0; i < imgsLength; i++) {
     $('.cardsImg').children('img').eq(i).attr('data-img', arr[i].url);
     $('.cardsImg').children('img').eq(i).attr('data-pos', i);
@@ -77,11 +79,6 @@ $('.cardsImg').on('click', function () {
     $(this).children('img').attr('src', visible)
 })
 
-var clicks = 0;
-var primerClick;
-var intentos = 0;
-var paresEncontrados = 0;
-
 $(".cardsImg").on("click", function () {
     $(this).children("img").addClass("noPointer");
     $(this).addClass("animated flipInY");
@@ -91,7 +88,7 @@ $(".cardsImg").on("click", function () {
         primerClick = arr[pos]
     } else {
         intentos += 1;
-        if (arr[pos].url == primerClick.url) {
+        if (arr[pos].url == primerClick.url && primerClick.id != arr[pos].id) {
             $(this).addClass("found");
             $("#" + primerClick.id).addClass("found");
             paresEncontrados++;
@@ -100,26 +97,23 @@ $(".cardsImg").on("click", function () {
             setTimeout(function () {
                 $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg");
                 $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")
-            }, 1000)
-            intentos + 1
-            console.log(intentos);
-
+            }, 1000)  
+        }
+        if (win() == true) {
+            $(".winner").removeClass("none");
+            $(".numberIntentos").html(intentos);
+        } else {
+            $(".lost").removeClass("none");
         }
         $(".lifes").children("p").html("<b>Intentos: </b>" + "<span class='number'>" + intentos + "</span>")
         clicks = 0
     }
 })
 
-function win() {
+function win () {
     if (paresEncontrados = 6 && intentos <= movements) {
-        $("body").append("<div class='winner'></div>");
-        $(".winner").append("<p>Ganaste🎉!con <span class='numberIntentos'></span> intentos.Ya podes vovler a jugar.")
-        $(".winner").append("<button class= 'level'>VOLVER A JUGAR</button>")
+        return true;
+    } else {
+        return false;
     }
 }
-
-// function game () {
-//     clicks;
-//     movimientos <= clicks
-//     intentos <= moviemientos 
-// }
