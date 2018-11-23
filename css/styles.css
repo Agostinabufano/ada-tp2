@@ -149,13 +149,24 @@ button {
 }
 .winner P {
   text-align: center;
+  margin-top: 0%;
+}
+.winner .ranking {
+  width: auto;
+}
+.winner .ranking .row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 20px;
+  width: 269px;
 }
 .winner div {
   width: 90px;
   display: flex;
   height: 100px;
-  border: solid black 1.5px;
   flex-direction: column;
+  justify-content: left;
 }
 
 .lost {
@@ -168,6 +179,11 @@ button {
   height: 150px;
   border-radius: 10px;
   background-color: bisque;
+  position: fixed;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 100px;
+  z-index: 1;
 }
 .lost P {
   text-align: center;

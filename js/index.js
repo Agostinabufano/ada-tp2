@@ -6,6 +6,8 @@ var primerClick;
 var intentos = 0;
 var paresEncontrados = 0;
 var nivel;
+var arrLocalStorage = localStorage.getItem("winners");
+var name = $("#name").val();
 
 $(".level").on("click", function () {
     var name = $("#name").val();
@@ -16,8 +18,8 @@ $(".level").on("click", function () {
         }, 3000)
     } else {
         $(".game").removeClass("none");
-        $(".welcome").addClass("none")
-        $("#hello").html(`Hola ${name}`)
+        $(".welcome").addClass("none");
+        $("#hello").html(`Hola ${name}`);
     }
 })
 
@@ -63,11 +65,6 @@ setArr(10, "../imagenes/peces.jpg")
 setArr(11, "../imagenes/alce.jpg")
 setArr(12, "../imagenes/epelante.jpg")
 
-$(".cardsImg").on("click", function () {
-    var id;
-    id = arr[arr.length - 1].id + 1
-})
-
 arr.sort(function (a, b) {
     return Math.random() - 0.5;
 })
@@ -96,30 +93,37 @@ $(".cardsImg").on("click", function () {
             $(this).addClass("found");
             $("#" + primerClick.id).addClass("found");
             paresEncontrados++;
-            console.log(paresEncontrados);
         } else {
             setTimeout(function () {
                 $("#" + primerClick.id).children("img").attr("src", "../imagenes/tapada.jpg");
                 $("#" + arr[pos].id).children("img").attr("src", "../imagenes/tapada.jpg")
-            }, 1000)  
+            }, 1000)
         }
         if (win() == true) {
             $(".winner").removeClass("none");
-            $(".game").addClass("overlaid")
+            $(".game").addClass("overlaid");
             $(".numberIntentos").html(intentos);
             var obj = {
                 nombre: $("#name").val(),
                 nivel: nivel,
                 intentos: intentos,
             }
-            localStorage.setItem("nombre", JSON.stringify(obj.nombre));
-            localStorage.setItem("nivel",JSON.stringify(obj.nivel));
-            localStorage.setItem("intentos",JSON.stringify(obj.intentos));
-            localStorage.getItem(JSON.stringify(obj.nombre),JSON.stringify(obj.nivel),JSON.stringify(obj.intentos));
-            $(".names").append(obj.nombre);
-            $(".levels").append(obj.nivel);
-            $(".attemps").append(obj.intentos);
-        } else if (win() == false){
+            if (arrLocalStorage == null) {
+                arrLocalStorage = [];
+            } else {
+                arrLocalStorage = JSON.parse(arrLocalStorage);
+            }
+            arrLocalStorage.push(obj);
+            localStorage.setItem('winners', JSON.stringify(arrLocalStorage))
+            for (var i = 0; i < arrLocalStorage.length; i++) {
+                $('.ranking').append(`
+                <div class="row">
+                <div class="names">${arrLocalStorage[i].nombre}</div>
+                <div class="levels">${arrLocalStorage[i].nivel}</div>
+                <div class="attemps">${arrLocalStorage[i].intentos}</div>
+            </div>`)
+            }
+        } else if (win() == false) {
             $(".lost").removeClass("none");
         }
         $(".lifes").children("p").html("<b>Intentos: </b>" + "<span class='number'>" + intentos + "</span>")
@@ -127,10 +131,23 @@ $(".cardsImg").on("click", function () {
     }
 })
 
-function win () {
+function win() {
     if (paresEncontrados == 6 && intentos <= movements) {
         return true;
-    }else if (paresEncontrados != 6 && intentos > movements) {
+    } else if (paresEncontrados != 6 && intentos > movements) {
         return false;
     }
 }
+
+$(".again").on("click", function () {
+    location.reload();
+    clicks = 0;
+    primerClick;
+    intentos = 0;
+    paresEncontrados = 0;
+    nivel;
+    name = "";
+    $(this).parent("div").addClass("none");
+    $(".game").addClass("none");
+    $(".welcome").removeClass("none");
+})
